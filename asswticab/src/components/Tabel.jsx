@@ -22,7 +22,7 @@ const Table = () => {
     }
     const {id}= useParams();
     const deleteuser = async (id) => {
-console.log(id);
+//console.log(id);
 
         const res = await fetch("/deleteclientdata/" + id, {
 
@@ -85,7 +85,7 @@ console.log(id);
                                             <td>{element.projectdetails}</td>
                                             <td>
                                                 <li class="nav-item actioncss" style={{listStyle: 'none', color: 'blue'}}>
-                                                    <a class="nav-link warning" href={`/Edit/${element._id}`}> Edit</a>
+                                                    <a class="nav-link warning" href={`/edit/${element._id}`}> Edit</a>
                                                 </li>
                                                 <li class="nav-item danger actioncss" onClick={() => deleteuser(element._id)} style={{listStyle: 'none', color: 'red'}}>
                                                    Delete
