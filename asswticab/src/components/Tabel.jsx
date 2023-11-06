@@ -24,7 +24,7 @@ const Table = () => {
     const deleteuser = async (id) => {
 console.log(id);
 
-        const res = await fetch("/deleteclientdata" + id, {
+        const res = await fetch("/deleteclientdata/" + id, {
 
             method: "DELETE",
         });
@@ -62,6 +62,7 @@ console.log(id);
                 <table class="table table-hover">
                     <thead>
                         <tr>
+                        <th scope="col">Sno.</th>
                             <th scope="col">firstname</th>
                             <th scope="col">Last Name</th>
                             <th scope="col">Mobile Number</th>
@@ -76,19 +77,19 @@ console.log(id);
                                 return (
                                     <>
                                         <tr>
-                                            <th scope="row"></th>
+                                            <th scope="row">{index+1}</th>
                                             <td>{element.firstname}</td>
                                             <td>{element.lastname}</td>
-                                            <td>{element.emailid}</td>
                                             <td>{element.phonenumber}</td>
+                                            <td>{element.emailid}</td>
                                             <td>{element.projectdetails}</td>
                                             <td>
-                                                <li class="nav-item actioncss">
+                                                <li class="nav-item actioncss" style={{listStyle: 'none', color: 'blue'}}>
                                                     <a class="nav-link warning" href={`/Edit/${element._id}`}> Edit</a>
                                                 </li>
-                                                <button class="nav-item danger actioncss" onClick={() => deleteuser(element._id)}>
+                                                <li class="nav-item danger actioncss" onClick={() => deleteuser(element._id)} style={{listStyle: 'none', color: 'red'}}>
                                                    Delete
-                                                </button>
+                                                </li>
                                             </td>
                                         </tr>
                                     </>
