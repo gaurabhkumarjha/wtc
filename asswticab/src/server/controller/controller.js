@@ -38,3 +38,36 @@ exports.clientdelete = async (req, res) => { // delete
       res.status(500).json(err);
     }
   }
+
+ exports.getclientdatabyid = async (req, res) => { // Edit get
+
+    const { id } = req.params;
+   // console.log(id);
+    try {
+  
+      const user = await client.findById({ _id: id });
+      res.status(201).json(user);
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  }
+
+  exports.editclientdetails = async (req,res)=>{
+
+    const { id } = req.params;
+
+    const { firstname, lastname, emailid, phonenumber, projectdetails } = req.body;
+  
+  
+    try {
+      const updateduclientdata = await client.findByIdAndUpdate({ _id: id }, {
+        firstname, lastname, emailid, phonenumber, projectdetails
+      });
+  
+      const clientdata = await updateduclientdata.save();
+      res.status(201);
+      res.status(201).json(clientdata); 
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  }
